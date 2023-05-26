@@ -196,7 +196,7 @@
 .form {
   display: flex;
   position: absolute;
-  top: 30%;
+  top: 28%;
   left: 5%;
   width: 90%;
   max-width: 64rem;
@@ -258,11 +258,23 @@
     }
 
     .form {
-      top: 25%
+      top: 22%
+    }
+
+    .form-section img {
+      max-height: 6rem;
     }
 
     .form input {
-      height: 3rem;
+      height: 2.8rem;
+    }
+
+    .body-header-main {
+      font-size: 1.5rem;
+    }
+    
+    .body-header-text {
+      font-size: .8rem;
     }
   }
  
@@ -326,7 +338,7 @@
       align-items: center;
       justify-content: center;
       min-width: none;
-      margin-right: none;
+      margin-right: 0;
       text-align: center;
     }
     
@@ -342,17 +354,88 @@
     .img-working {
       width: 100%;
       height: auto;
+      max-width: 30rem;
     }
 
     .getStarted {
       padding: 1rem 2rem;
+      border-radius: 2rem;
     }
 
     .form {
-      top: 20%
+      top: 23%
     }
 
     .form input {
       height: 2.5rem;
+    }
+
+    .form button{
+      width: 25%;
+      font-size: .9rem;
+    }
+  }
+
+  @media screen and (max-width: 675px) {
+    .main-text-header {
+      font-size: 2.2rem;
+    }
+    
+    .main-text {
+      font-size: .8rem;
+      min-width: 17rem;
+      margin: 1rem 0;
+    }
+
+    .getStarted {
+      padding: .8rem 1.5rem;
+      border-radius: 2rem;
+    }
+ 
+    .img-working {
+      width: 100%;
+      height: auto;
+      max-width: 26rem;
+    }
+
+    .form-section {
+      margin: 2rem 3rem;
+    }
+    
+    .form-section img {
+      min-height: 8rem;
+    }
+    
+    .form {
+      display: flex;
+      flex-direction: column;
+      top: 16%
+    }
+
+    .form input {
+      height: 2.5rem;
+      width: 100%;
+      padding: 0;
+      border-radius: .5rem;
+      border: none;
+      margin-bottom: .5rem;
+    }
+
+    .form button{
+      width: 100%;
+      font-size: 1rem;
+      border-radius: .5rem;
+      height: 2.5rem;
+    }
+
+    .body-header-main {
+      font-size: 1.6rem;
+      margin: 2rem 0 0 0;
+    }
+    
+    .body-header-text {
+      color: var(--neutral-gray);
+      font-size: .8rem;
+      text-align: center;
     }
   }
