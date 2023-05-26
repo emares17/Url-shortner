@@ -169,6 +169,7 @@
   color: #fff;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
+  font-size: 1rem;
   border: none;
   border-radius: 1.4rem;
   cursor: pointer;
@@ -214,10 +215,32 @@
   color: #fff;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
+  font-size: 1rem;
   border: none;
   border-radius: 1rem;
   cursor: pointer;
 }
+
+.body-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.body-header-main {
+  color: #34313D;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 4rem 0 0 0;
+}
+
+.body-header-text {
+  color: var(--neutral-gray);
+  font-size: 1rem;
+  text-align: center;
+}
+
   /* Media query */
   @media screen and (max-width: 1080px) {
     .main-text-header {
