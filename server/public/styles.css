@@ -226,6 +226,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 0 2rem;
 }
 
 .body-header-main {
@@ -271,6 +272,7 @@
 
     .body-header-main {
       font-size: 1.5rem;
+      margin: 2rem 0 0 0;
     }
     
     .body-header-text {
@@ -337,9 +339,9 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-width: none;
       margin-right: 0;
       text-align: center;
+      min-width: none;
     }
     
     .main-text-header {
@@ -437,5 +439,32 @@
       color: var(--neutral-gray);
       font-size: .8rem;
       text-align: center;
+      word-wrap: break-word;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .container {
+      padding: 2rem 1.5rem;
+    }
+
+    .main-text-header {
+      font-size: 2rem;
+    }
+    
+    .main-text {
+      font-size: .8rem;
+      min-width: 17rem;
+    }
+
+    .img-working {
+      width: 100%;
+      height: auto;
+      max-width: 20rem;
+    }
+
+    .getStarted {
+      padding: 1rem 2rem;
+      border-radius: 2rem;
     }
   }
