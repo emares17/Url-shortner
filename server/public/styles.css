@@ -82,7 +82,7 @@
   }
 
   .signup-btn:hover, .getStarted:hover, .shorten:hover {
-    opacity: 75%;
+    filter: brightness(1.1);
   }
   .hamburger-menu {
     display: none;
@@ -242,6 +242,63 @@
   text-align: center;
 }
 
+.body-info-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 80rem;
+  margin: 2rem 4rem;
+}
+
+.body-info-section .body-info-card:nth-child(n + 2) {
+  margin-top: 5rem;
+}
+
+.body-info-section .body-info-card:nth-child(n + 3) {
+  margin-top: 10rem;
+}
+
+.body-info-card {
+  position: relative;
+  max-width: 22rem;
+  min-height: 18rem;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  flex-direction: column;
+  border-radius: .6rem;
+  background: #ffffff;
+  box-shadow:  8px 8px 13px #8a8a8a,
+             -8px -8px 13px #ffffff;
+}
+
+.body-info-card img {
+  height: 2rem;
+  position: absolute;
+  top: -30px;
+  left: 20px;
+  background: var(--primary-dark-violet);
+  padding: 1rem 1rem;
+  border-radius: 2rem;
+}
+
+.body-card-text {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  margin: 1rem 2rem 0 2rem;
+}
+
+.body-card-text h4 {
+  font-size: 1.5rem;
+  color: #34313D;
+  margin-bottom: 0;
+}
+
+.body-card-text p {
+  font-size: .9rem;
+  color: var(--neutral-gray);
+}
   /* Media query */
   @media screen and (max-width: 1080px) {
     .main-text-header {
@@ -454,17 +511,37 @@
     
     .main-text {
       font-size: .8rem;
-      min-width: 17rem;
+      max-width: 10rem;
+    }
+
+    .img-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .img-working {
-      width: 100%;
+      width: 80vw;
       height: auto;
-      max-width: 20rem;
     }
 
     .getStarted {
-      padding: 1rem 2rem;
+      padding: .8rem 1.6rem;
       border-radius: 2rem;
+    }
+
+    .form-section {
+      margin: 2rem 2rem;
+    }
+
+    .body-header-main {
+      font-size: 1.5rem;
+      margin: 1rem .5rem 0 .5rem;
+    }
+    
+    .body-header-text {
+      color: var(--neutral-gray);
+      font-size: .8rem;
+      padding: 0 1.7rem;
     }
   }
