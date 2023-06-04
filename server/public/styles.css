@@ -309,6 +309,24 @@
   color: var(--neutral-gray);
 }
 
+.footer-start {
+  max-width: 80rem;
+  background-color: var(--primary-dark-violet);
+  position: relative;
+}
+
+.footer-start-text {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 50%;
+  left: 40%;
+}
+
+.footer-start-text img {
+  width: 100%;
+}
+
   /* Media query */
   @media screen and (max-width: 1320px) {
     .body-card-text h4 {
