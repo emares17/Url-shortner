@@ -16,3 +16,24 @@ const closeNavMenuOutside = (event) => {
 
 document.addEventListener('click', closeNavMenuOutside);
 
+document.querySelectorAll('.copy-button').forEach(copyButton => {
+  const shortUrlSpan = copyButton.parentNode.querySelector('.short-url');
+  const shortUrlText = shortUrlSpan.textContent;
+  let timeout;
+
+  copyButton.addEventListener('click', () => {
+    navigator.clipboard.writeText(shortUrlText);
+
+    copyButton.textContent = 'Copied!';
+    copyButton.style.backgroundColor = 'hsl(257, 27%, 26%)';
+
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      copyButton.textContent = 'Copy';
+      copyButton.style.backgroundColor = 'hsl(180, 66%, 49%)';
+    }, 3000);
+
+  });
+});
+

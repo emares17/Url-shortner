@@ -1,10 +1,15 @@
 const path = require('path');
 const Url = require('../models/Url');
 const { RequestError } = require('../middleware/errorHandler')
+const { trimUrl } = require('../utils/utils');
 
 exports.getHome = async (req, res, next) => {
     try {
       const shortUrl = await Url.find(); 
+      // const trimmedUrls = shortUrl.map(url => ({
+      //   ...url.toObject(),
+      //   trimmedUrl: trimUrl(url.url, 25) 
+      // }));
       res.render('index',{ shortUrl: shortUrl });
     } catch (error) {
       next(error);

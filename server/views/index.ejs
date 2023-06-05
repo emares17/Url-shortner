@@ -61,6 +61,19 @@
         <button class="shorten">Shorten it!</button>
       </form>
     </section>
+
+    <section class="url-section">
+      <% shortUrl.forEach(shortUrl => { %>  
+        <div class="url-container">
+            <span class="url"><a href="<%= shortUrl.url %>"><%= shortUrl.url %></a></span>
+            <div class="url-display">
+              <span class="short-url"><a href="<%= shortUrl.url_shortid %>"><%= shortUrl.url_shortid %></a></span>
+              <button class="copy-button">Copy</button>
+            </div>
+        </div>
+      <% }) %>
+    </section>
+    
     
     <section class="body-header-section">
       <div class="body-header">
