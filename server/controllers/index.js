@@ -1,20 +1,28 @@
 const path = require('path');
 const Url = require('../models/Url');
-const { RequestError } = require('../middleware/errorHandler')
-const { trimUrl } = require('../utils/utils');
+const { RequestError } = require('../middleware/errorHandler');
+const { getShortUrls } = require('../utils/utils');
 
 exports.getHome = async (req, res, next) => {
-    try {
-      const shortUrl = await Url.find(); 
-      // const trimmedUrls = shortUrl.map(url => ({
-      //   ...url.toObject(),
-      //   trimmedUrl: trimUrl(url.url, 25) 
-      // }));
-      res.render('index',{ shortUrl: shortUrl });
-    } catch (error) {
-      next(error);
-    }
-  };
+  try {
+    const response = await getShortUrls(0, 5);
+    res.render('index', { data: response, shortUrl: response.shortUrl, currentPage: response.currentPage, totalPages: response.totalPages });
+  } catch (error) {
+    next(error);
+  }
+};
+
+exports.loadMore = async (req, res, next) => {
+  try {
+    const page = req.query.p || 0;
+    const limit = 5;
+
+    const response = await getShortUrls(page, limit);
+    res.json(response);
+  } catch (error) {
+    next(error);
+  }
+};
 
 exports.createShortUrl = async(req, res, next) => {
     try {

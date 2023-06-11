@@ -62,7 +62,7 @@
       </form>
     </section>
 
-    <section class="url-section">
+    <section class="url-section" data-current-page="<%= currentPage %>" data-total-pages="<%= totalPages %>" >
       <% shortUrl.forEach(shortUrl => { %>  
         <div class="url-container">
             <span class="url"><a href="<%= shortUrl.url %>"><%= shortUrl.url %></a></span>
@@ -73,6 +73,10 @@
         </div>
       <% }) %>
     </section>
+
+  
+    <button class="load">Load More</button>
+  
     
     
     <section class="body-header-section">

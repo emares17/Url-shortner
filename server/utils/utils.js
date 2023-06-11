@@ -1,9 +1,15 @@
-function trimUrl(url, maxLen) {
-    if (url.length <= maxLen) {
-      return url;
-    } else {
-      url.slice(0, maxLen) + '...';
-    }
-}
+const Url = require('../models/Url');
 
-module.exports = { trimUrl };
+const getShortUrls = async (page, limit) => {
+  const skip = page * limit;
+  const totalUrls = await Url.countDocuments();
+  const shortUrl = await Url.find().skip(skip).limit(limit).exec();
+
+  return {
+    shortUrl: shortUrl,
+    currentPage: page,
+    totalPages: Math.ceil(totalUrls / limit)
+  };
+};
+
+module.exports = { getShortUrls };
