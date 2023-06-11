@@ -252,6 +252,15 @@
   text-decoration: none;
 }
 
+.url {
+  padding-right: 3rem;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .url-display a {
   color: var(--primary-cyan);
   text-decoration: none;
@@ -285,7 +294,7 @@
 
 .body-header-main {
   color: #34313D;
-  font-size: 2rem;
+  font-size: clamp(18px, 3vw, 36px);
   font-weight: 700;
   margin: 4rem 0 0 0;
 }
@@ -424,7 +433,6 @@
     }
 
     .body-header-main {
-      font-size: 1.5rem;
       margin: 2rem 0 0 0;
     }
     
@@ -575,6 +583,27 @@
       width: 25%;
       font-size: .9rem;
     }
+
+    .url-container {
+      flex-direction: column;
+      height: 8rem;
+      justify-content: center;
+    }
+
+    .url {
+      padding-bottom: .5rem;
+      padding-right: 0;
+    }
+
+    .url-display {
+      width: 100%;
+      flex-direction: column;
+      border-top: 1px solid #34313D;
+    }
+
+    .copy-button {
+      width: 100%;
+    }
   }
 
   @media screen and (max-width: 675px) {
@@ -629,7 +658,6 @@
     }
 
     .body-header-main {
-      font-size: 1.6rem;
       margin: 2rem 0 0 0;
     }
     
@@ -638,6 +666,10 @@
       font-size: .8rem;
       text-align: center;
       word-wrap: break-word;
+    }
+
+    .url-section {
+      margin: 2rem 3rem;
     }
   }
 
@@ -676,7 +708,6 @@
     }
 
     .body-header-main {
-      font-size: 1.5rem;
       margin: 1rem .5rem 0 .5rem;
     }
     
@@ -702,5 +733,9 @@
     
     .body-card-text p {
       font-size: .8rem;
+    }
+
+    .url-section {
+      margin: 2rem 2rem;
     }
   }
