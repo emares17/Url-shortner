@@ -6,6 +6,7 @@ const path = require('path')
 const mongoose = require('mongoose');
 const connectDB = require('./config/db');
 const { errorHandler } = require('./middleware/errorHandler');
+const ejs = require('ejs');
 
 
 // Load config
