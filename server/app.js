@@ -6,7 +6,7 @@ const path = require('path')
 const mongoose = require('mongoose');
 const connectDB = require('./config/db');
 const { errorHandler } = require('./middleware/errorHandler');
-const ejs = require('ejs');
+
 
 
 // Load config
@@ -19,7 +19,7 @@ connectDB();
 app.use(express.static('public'));
 
 // EJS
-app.set('view engine', 'EJS');
+app.set('view engine', 'ejs');
 
 // Bodyparser
 app.use(express.urlencoded({ extended: true}));
