@@ -82,7 +82,7 @@
     cursor: pointer;
   }
 
-  .signup-btn:hover, .getStarted:hover, .shorten:hover {
+  .signup-btn:hover, .getStarted:hover, .shorten:hover, .copy-button:hover {
     filter: brightness(1.1);
   }
   .hamburger-menu {
