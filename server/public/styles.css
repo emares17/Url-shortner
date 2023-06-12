@@ -82,7 +82,7 @@
     cursor: pointer;
   }
 
-  .signup-btn:hover, .getStarted:hover, .shorten:hover, .copy-button:hover {
+  .signup-btn:hover, .getStarted:hover, .shorten:hover, .copy-button:hover, .load:hover {
     filter: brightness(1.1);
   }
   .hamburger-menu {
@@ -284,6 +284,24 @@
   width: 6rem;
 }
 
+.load-btn-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.load {
+  padding: .8rem 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  background-color: var(--primary-cyan);
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
 .body-header {
   display: flex;
   justify-content: center;
@@ -294,7 +312,7 @@
 
 .body-header-main {
   color: #34313D;
-  font-size: clamp(18px, 3vw, 36px);
+  font-size: clamp(20px, 5vw, 36px);
   font-weight: 700;
   margin: 4rem 0 0 0;
 }
@@ -604,6 +622,11 @@
     .copy-button {
       width: 100%;
     }
+
+    .load {
+      padding: .7rem .9rem;
+      font-size: 1rem;
+    }
   }
 
   @media screen and (max-width: 675px) {
@@ -737,5 +760,10 @@
 
     .url-section {
       margin: 2rem 2rem;
+    }
+
+    .load {
+      padding: .5rem .7rem;
+      font-size: .9rem;
     }
   }

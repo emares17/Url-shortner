@@ -80,35 +80,3 @@ loadButton.addEventListener('click', () => {
     });
 });
 
-
-
-
-
-
-
-
-
-
-
-// loadMoreButton.addEventListener('click', () => {
-//   fetch(`/?page=${currentPage + 1}`)
-//     .then(response => response.text())
-//     .then(html => {
-//       const parser = new DOMParser();
-//       const newDocument = parser.parseFromString(html, 'text/html');
-
-//       const newURLs = newDocument.querySelectorAll('.url-container');
-//       newURLs.forEach(newURL => {
-//         urlSection.appendChild(newURL);
-//       });
-
-//       currentPage += 1;
-
-//       if (currentPage === totalPages) {
-//         loadMoreButton.style.display = 'none';
-//       }
-//     })
-//     .catch(error => {
-//       console.error('Error loading more data:', error);
-//     });
-// });
