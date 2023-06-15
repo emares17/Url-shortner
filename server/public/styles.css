@@ -98,8 +98,6 @@
     transition: transform 0.3s, opacity 0.3s;
   }
 
-
-
   .active .bar:nth-child(1) {
     transform: rotate(-45deg) translate(-5px, 5px);
   }
