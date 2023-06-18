@@ -1,12 +1,18 @@
 const path = require('path');
 const Url = require('../models/Url');
+const passport = require('passport');
 const { RequestError } = require('../middleware/errorHandler');
 const { getShortUrls } = require('../utils/utils');
 
 exports.getHome = async(req, res, next) => {
   try {
     const response = await getShortUrls(0, 5);
-    res.render('index', { data: response, shortUrl: response.shortUrl, currentPage: response.currentPage, totalPages: response.totalPages });
+    res.render('index', { 
+      data: response, 
+      shortUrl: response.shortUrl, 
+      currentPage: response.currentPage, 
+      totalPages: response.totalPages, 
+      authenticated: req.isAuthenticated() });
   } catch (error) {
     next(error);
   }

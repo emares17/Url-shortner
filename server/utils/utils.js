@@ -8,7 +8,7 @@ const getShortUrls = async (page, limit) => {
   return {
     shortUrl: shortUrl,
     currentPage: page,
-    totalPages: Math.ceil(totalUrls / limit)
+    totalPages: Math.ceil(totalUrls / limit),
   };
 };
 

@@ -79,7 +79,7 @@ html, body {
     
   }
   
-  .sign-up-google p {
+  .sign-up-google a {
     color: #34313D;
     font-weight: 700;
     text-transform: uppercase;
@@ -87,6 +87,7 @@ html, body {
     font-size: .7rem;
     margin-left:auto;
     margin-right:auto;
+    text-decoration: none;
   }
 
   .sign-up-footer {
@@ -129,7 +130,7 @@ html, body {
         padding-left: 0;
     }
 
-    .sign-up-google p {
+    .sign-up-google a {
         font-size: .6rem;
       }
 

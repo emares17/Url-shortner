@@ -21,8 +21,18 @@
       </nav>
       <div class="desktop-menu">
         <ul>
-          <li><button class="login-btn">Login</button></li>
-          <li><a href="/signup"><button class="signup-btn">Sign Up</button></a></li>
+          <li>
+            <% if (authenticated) { %>
+              <a href="/oauth/logout">
+                <button class="login-btn">Logout</button>
+              </a>
+            <% } else { %>
+              <a href="/oauth/google">
+                <button class="login-btn">Login</button>
+                <li><a href="/signup"><button class="signup-btn">Sign Up</button></a></li>
+              </a>
+            <% } %>
+          </li>
         </ul>
       </div>
 
