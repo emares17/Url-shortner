@@ -3,7 +3,7 @@ const Url = require('../models/Url');
 const { RequestError } = require('../middleware/errorHandler');
 const { getShortUrls } = require('../utils/utils');
 
-exports.getHome = async (req, res, next) => {
+exports.getHome = async(req, res, next) => {
   try {
     const response = await getShortUrls(0, 5);
     res.render('index', { data: response, shortUrl: response.shortUrl, currentPage: response.currentPage, totalPages: response.totalPages });
@@ -12,7 +12,7 @@ exports.getHome = async (req, res, next) => {
   }
 };
 
-exports.loadMore = async (req, res, next) => {
+exports.loadMore = async(req, res, next) => {
   try {
     const page = req.query.p || 0;
     const limit = 5;
@@ -45,4 +45,12 @@ exports.getShortUrl = async(req, res, next) => {
     } catch (error) {
         next(error);
     }
+};
+
+exports.getSignUp = async(req, res, next) => {
+  try {
+    res.render('signup');
+  } catch (error) {
+    next(error)
+  }
 };
