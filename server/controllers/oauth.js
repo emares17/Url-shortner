@@ -34,7 +34,7 @@ exports.oAuthLogout = (req, res) => {
     } else {
         res.redirect('/')
     }
-  })  
+   })  
 }
 
 exports.oAuthStatus = (req, res, next) => {

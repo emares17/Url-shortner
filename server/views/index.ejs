@@ -42,8 +42,18 @@
           <li><a href="#">Features</a></li>
           <li><a href="#">Pricing</a></li>
           <li><a href="#">Resources</a></li>
-          <li><button class="login-btn">Login</button></li>
-          <li><button class="signup-btn" action="/signup">Sign Up</button></li>
+          <li>
+            <% if (authenticated) { %>
+              <a href="/oauth/logout">
+                <button class="login-btn">Logout</button>
+              </a>
+            <% } else { %>
+              <a href="/oauth/google">
+                <button class="login-btn">Login</button>
+                <li><a href="/signup"><button class="signup-btn">Sign Up</button></a></li>
+              </a>
+            <% } %>
+          </li>
         </ul>
       </div>
       <div class="hamburger-menu">
@@ -125,7 +135,7 @@
       <img src="/images/bg-boost-desktop.svg" alt="">
       <div class="footer-start-text">
         <span>Boost your links today</span>
-        <button class="getStarted">Get Started</button>
+        <button class="footer-btn">Get Started</button>
       </div>
     </section>
 

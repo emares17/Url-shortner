@@ -82,7 +82,7 @@
     cursor: pointer;
   }
 
-  .signup-btn:hover, .getStarted:hover, .shorten:hover, .copy-button:hover, .load:hover {
+  .signup-btn:hover, .getStarted:hover, .shorten:hover, .copy-button:hover, .load:hover, .footer-btn:hover {
     filter: brightness(1.1);
   }
   .hamburger-menu {
@@ -393,6 +393,7 @@
 
 .footer-start img {
   width: 100%;
+  min-height: 7rem;
 }
 
 .footer-start-text {
@@ -412,6 +413,20 @@
   font-size: 2rem;
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+.footer-btn {
+  padding: .5rem 1.1rem;
+  background-color: var(--primary-cyan);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 1.4rem;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-top: .5rem;
 }
 
   /* Media query */
@@ -487,6 +502,14 @@
     
     .body-info-section .body-info-card:nth-child(n + 3) {
       margin: 5rem 0 0 0;
+    }
+
+    .footer-start-text span {
+      font-size: 1.7rem;
+    }
+
+    .footer-btn {
+      font-size: .8rem;
     }
   }
  
@@ -625,6 +648,10 @@
       padding: .7rem .9rem;
       font-size: 1rem;
     }
+
+    .footer-start-text span {
+      font-size: 1.5rem;
+    }
   }
 
   @media screen and (max-width: 675px) {
@@ -691,6 +718,14 @@
 
     .url-section {
       margin: 2rem 3rem;
+    }
+
+    .footer-start-text span {
+      font-size: 1rem;
+    }
+
+    .footer-btn {
+      font-size: .7rem;
     }
   }
 
@@ -764,9 +799,15 @@
       padding: .5rem .7rem;
       font-size: .9rem;
     }
+
+    .footer-start-text span {
+      font-size: .9rem;
+    }
+
+    .footer-btn {
+      font-size: .6rem;
+    }
   }
-
-
 
 
   /* --------------------SIGN UP FORM---------------------- */
