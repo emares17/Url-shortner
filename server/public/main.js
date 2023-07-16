@@ -42,13 +42,20 @@ const loadButton = document.querySelector('.load');
 const urlSection = document.querySelector('.url-section');
 const totalPages = parseInt(urlSection.dataset.totalPages);
 let currentPage = parseInt(urlSection.dataset.currentPage);
+const authenticated = urlSection.dataset.authenticated === 'true';
 
 console.log('Initial currentPage:', currentPage);
 console.log('Initial totalPages:', totalPages);
 
+if (totalPages == 1) {
+  loadButton.style.display = 'none';
+} else {
+  loadButton.style.display = 'block';
+}
+
 loadButton.addEventListener('click', () => {
 
-  fetch(`/load-more?p=${parseInt(currentPage) + 1}`)
+  fetch(`/load-more?p=${parseInt(currentPage) + 1}&authenticated=${authenticated}`)
     .then(res => res.json())
     .then(data => {
       console.log('Response data:', data);
@@ -71,9 +78,6 @@ loadButton.addEventListener('click', () => {
 
       currentPage = parseInt(currentPage) + 1; 
 
-      if (currentPage >= totalPages) {
-        loadButton.style.display = 'none';
-      }
     })
     .catch(err => {
       console.error('Error loading more data:', err);

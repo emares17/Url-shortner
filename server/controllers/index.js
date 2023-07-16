@@ -1,18 +1,30 @@
 const path = require('path');
 const Url = require('../models/Url');
+const User = require('../models/User')
 const passport = require('passport');
 const { RequestError } = require('../middleware/errorHandler');
 const { getShortUrls } = require('../utils/utils');
 
 exports.getHome = async(req, res, next) => {
   try {
-    const response = await getShortUrls(0, 5);
+    let query = {};
+
+    if (req.isAuthenticated()) {
+      query = { user: req.user.id };
+    }
+
+    const response = await getShortUrls(0, 5, query);
+
+    console.log(response)
+    
     res.render('index', { 
       data: response, 
       shortUrl: response.shortUrl, 
+      firstName: req.isAuthenticated() ? req.user.firstName : null,
       currentPage: response.currentPage, 
       totalPages: response.totalPages, 
-      authenticated: req.isAuthenticated() });
+      authenticated: req.isAuthenticated() 
+    });
   } catch (error) {
     next(error);
   }
@@ -22,8 +34,15 @@ exports.loadMore = async(req, res, next) => {
   try {
     const page = req.query.p || 0;
     const limit = 5;
+    const authenticated = req.query.authenticated = 'true';
 
-    const response = await getShortUrls(page, limit);
+    let query = {};
+
+    if (authenticated) {
+      query = { user: req.user.id }
+    }
+
+    const response = await getShortUrls(page, limit, query);
     res.json(response);
   } catch (error) {
     next(error);
@@ -32,8 +51,11 @@ exports.loadMore = async(req, res, next) => {
 
 exports.createShortUrl = async(req, res, next) => {
     try {
-        await Url.create({ url: req.body.url });
-        res.redirect('/');
+      const { url } = req.body;
+      const user = req.user ? req.user._id : null
+
+      await Url.create({ url, user: user });
+      res.redirect('/');
     } catch (error) {
         next(error);
     }

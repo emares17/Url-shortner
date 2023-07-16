@@ -23,6 +23,7 @@
         <ul>
           <li>
             <% if (authenticated) { %>
+              <span>Hello <%= firstName %></span>
               <a href="/oauth/logout">
                 <button class="login-btn">Logout</button>
               </a>

@@ -1,9 +1,9 @@
 const Url = require('../models/Url');
 
-const getShortUrls = async (page, limit) => {
+const getShortUrls = async (page, limit, query = {}) => {
   const skip = page * limit;
-  const totalUrls = await Url.countDocuments();
-  const shortUrl = await Url.find().sort({ _id: -1 }).skip(skip).limit(limit).exec();
+  const totalUrls = await Url.countDocuments(query);
+  const shortUrl = await Url.find(query).sort({ _id: -1 }).skip(skip).limit(limit).exec();
 
   return {
     shortUrl: shortUrl,
