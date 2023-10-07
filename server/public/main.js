@@ -47,7 +47,7 @@ const authenticated = urlSection.dataset.authenticated === 'true';
 console.log('Initial currentPage:', currentPage);
 console.log('Initial totalPages:', totalPages);
 
-if (totalPages == 1) {
+if (totalPages <= 1) {
   loadButton.style.display = 'none';
 } else {
   loadButton.style.display = 'block';

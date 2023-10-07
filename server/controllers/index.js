@@ -2,22 +2,24 @@ const path = require('path');
 const Url = require('../models/Url');
 const User = require('../models/User')
 const passport = require('passport');
+const { v4: uuidv4 } = require('uuid');
 const { RequestError } = require('../middleware/errorHandler');
 const { getShortUrls } = require('../utils/utils');
+const { default: mongoose } = require('mongoose');
 
 exports.getHome = async(req, res, next) => {
   try {
-    let query = {};
+    let response;
 
     if (req.isAuthenticated()) {
-      query = { user: req.user.id };
+      const user = req.user.id;
+      response = await getShortUrls(0, 5, user);
+    } else {
+      guest = 'guest'
+      response = await getShortUrls(0, 5, guest);
     }
-
-    const response = await getShortUrls(0, 5, query);
-
-    console.log(response)
     
-    res.render('index', { 
+    res.render('index', {
       data: response, 
       shortUrl: response.shortUrl, 
       firstName: req.isAuthenticated() ? req.user.firstName : null,
@@ -30,35 +32,40 @@ exports.getHome = async(req, res, next) => {
   }
 };
 
-exports.loadMore = async(req, res, next) => {
+exports.loadMore = async (req, res, next) => {
   try {
     const page = req.query.p || 0;
     const limit = 5;
-    const authenticated = req.query.authenticated = 'true';
+    let user = null;
 
-    let query = {};
-
-    if (authenticated) {
-      query = { user: req.user.id }
+    if (req.isAuthenticated()) {
+      user = req.user.id;
     }
 
-    const response = await getShortUrls(page, limit, query);
+    const response = await getShortUrls(page, limit, user);
     res.json(response);
   } catch (error) {
     next(error);
   }
 };
 
-exports.createShortUrl = async(req, res, next) => {
-    try {
-      const { url } = req.body;
-      const user = req.user ? req.user._id : null
+exports.createShortUrl = async (req, res, next) => {
+  try {
+    const { url } = req.body;
+    let user = null;
 
-      await Url.create({ url, user: user });
-      res.redirect('/');
-    } catch (error) {
-        next(error);
+    if (req.isAuthenticated()) {
+      user = req.user._id; 
+      await Url.create({ url, user: user});
+    } else {
+      const guestId = new mongoose.Types.ObjectId()
+      await Url.create({ url, user: guestId, guest: true});
     }
+
+    res.redirect('/');
+  } catch (error) {
+    next(error);
+  }
 };
 
 exports.getShortUrl = async(req, res, next) => {
