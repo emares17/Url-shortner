@@ -19,10 +19,11 @@ document.addEventListener('click', closeNavMenuOutside);
 document.querySelectorAll('.copy-button').forEach(copyButton => {
   const shortUrlSpan = copyButton.parentNode.querySelector('.short-url');
   const shortUrlText = shortUrlSpan.textContent;
+  const url = window.location.href;
   let timeout;
 
   copyButton.addEventListener('click', () => {
-    navigator.clipboard.writeText(shortUrlText);
+    navigator.clipboard.writeText(url + shortUrlText);
 
     copyButton.textContent = 'Copied!';
     copyButton.style.backgroundColor = 'hsl(257, 27%, 26%)';
@@ -55,7 +56,7 @@ if (totalPages <= 1) {
 
 loadButton.addEventListener('click', () => {
 
-  fetch(`/load-more?p=${parseInt(currentPage) + 1}&authenticated=${authenticated}`)
+  fetch(`/load-more?p=${parseInt(currentPage) + 1}`) //&authenticated=${authenticated} Possibly needed for authenticated users
     .then(res => res.json())
     .then(data => {
       console.log('Response data:', data);
@@ -77,6 +78,10 @@ loadButton.addEventListener('click', () => {
       });
 
       currentPage = parseInt(currentPage) + 1; 
+
+      if (currentPage >= totalPages) {
+        loadButton.style.display = 'none';
+      }
 
     })
     .catch(err => {
