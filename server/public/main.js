@@ -16,6 +16,7 @@ const closeNavMenuOutside = (event) => {
 
 document.addEventListener('click', closeNavMenuOutside);
 
+// Copy button transform function when clicked 
 document.querySelectorAll('.copy-button').forEach(copyButton => {
   const shortUrlSpan = copyButton.parentNode.querySelector('.short-url');
   const shortUrlText = shortUrlSpan.textContent;
@@ -38,7 +39,7 @@ document.querySelectorAll('.copy-button').forEach(copyButton => {
   });
 });
 
-
+// Load More button functionality 
 const loadButton = document.querySelector('.load');
 const urlSection = document.querySelector('.url-section');
 const totalPages = parseInt(urlSection.dataset.totalPages);
@@ -48,15 +49,15 @@ const authenticated = urlSection.dataset.authenticated === 'true';
 console.log('Initial currentPage:', currentPage);
 console.log('Initial totalPages:', totalPages);
 
-if (totalPages <= 1) {
-  loadButton.style.display = 'none';
-} else {
-  loadButton.style.display = 'block';
-}
+// if (totalPages <= 1 || currentPage >= totalPages) {
+//   loadButton.style.display = 'none';
+// } else {
+//   loadButton.style.display = 'block';
+// }
 
 loadButton.addEventListener('click', () => {
 
-  fetch(`/load-more?p=${parseInt(currentPage) + 1}`) //&authenticated=${authenticated} Possibly needed for authenticated users
+  fetch(`/load-more?p=${parseInt(currentPage) + 1}&authenticated=${authenticated}`) //Possibly needed for authenticated users
     .then(res => res.json())
     .then(data => {
       console.log('Response data:', data);
@@ -87,5 +88,14 @@ loadButton.addEventListener('click', () => {
     .catch(err => {
       console.error('Error loading more data:', err);
     });
+});
+
+// Get Started auto scroll to form when clicked
+const getStartedButton = document.querySelectorAll('.getStarted');
+
+getStartedButton.forEach((element) => {
+  element.addEventListener('click', () => {
+    document.getElementById('form-section').scrollIntoView({ behavior: 'smooth'});
+  });
 });
 
